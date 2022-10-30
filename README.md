@@ -3,6 +3,11 @@
 
 # 1. Introducción.
 
+## Integrantes
+Samuel David Villegas Bedoya
+Julian Andres Ramirez Jimenez 
+Julian Giraldo Perez
+
 ## 1.1 Propósito.
 Este documento está dirigido a clientes potenciales, desarrolladores y en general personas que desean adquirir una mejor comprensión sobre lo que es el proyecto InOut. El principal objetivo es mostrar cuales son nuestros propósitos, metas y objetivos detrás de la creación de InOut, y además se adentrará de forma más profunda en los diferentes tipos de requerimientos que se consideran pertinentes para el correcto desarrollo del proyecto, todo con la finalidad de que el lector comprenda de forma íntegra de que se trata 
 este proyecto.
