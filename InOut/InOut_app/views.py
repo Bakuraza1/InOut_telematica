@@ -67,7 +67,6 @@ def pind(request, id_obj):
     names = []
     for i in comentarios:
         names.append([((NewUser.objects.get(id= i.Usuario_id)).username),i.Comentario])
-    print(names)
     if request.method == "POST":
         new_comment = models.Comentario(Usuario=request.user, Producto = current_product, Comentario=request.POST['coment'])
         new_comment.save()
