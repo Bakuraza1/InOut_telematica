@@ -233,9 +233,42 @@ En el diagrama se pueden ver dos clases que corresponden a usuarios que se regis
 ![datos_tel drawio](https://user-images.githubusercontent.com/110442546/198854879-eceed427-eaae-4b49-a8cd-e72c2ed636d5.png)
 
 ## 5.3 Diagrama de despliegue 
-En este diagrama se observa como el browser busca en el servidor DNS la respectiva ip del dominio que se haya ingresado, en este caso, inoutinventario.tk, cuando ya se tiene la ip el cliente se comunica a través del protocolo HTTP con el servidor de la aplicación, el cual finalmente se comunica por TCP/Ip con el servidor de datos para realizar las diferentes funciones.
+En este diagrama se observa como el browser busca en el servidor DNS la respectiva ip del dominio que se haya ingresado, en este caso, http://inoutinventario.online, cuando ya se tiene la ip el cliente se comunica a través del protocolo HTTP con el servidor de la aplicación, el cual finalmente se comunica por TCP/Ip con el servidor de datos para realizar las diferentes funciones.
 ![Despliegue_tel drawio](https://user-images.githubusercontent.com/110442546/198854878-35befc1e-a797-4136-9a09-9c6dd329595b.png)
 
 ## 5.4 Diagrama de Navegación
-Eb este diagrama se puede observar como es la navegación a través de la aplicación.
-![image](https://user-images.githubusercontent.com/110442546/198854876-b689c583-b0cb-42df-a612-6385749ae511.png)
+En este diagrama se puede observar como es la navegación a través de la aplicación.
+![Nave_telematica drawio](https://user-images.githubusercontent.com/110442546/198865581-f2c966f1-7faf-4fc1-87ea-953ac0d68d99.png)
+
+
+# 6 Desarrollo y Despliegue 
+## 6.1 Aplicación
+La aplicación fue desarrollada en django, Django es un framework web de alto nivel que permite el desarrollo rápido de sitios web seguros y mantenibles. En este desarrollamos los diferentes modelos, views, templates y demas elementos necesarios para la creación de la aplicación 
+## 6.2 Base de datos
+El gestor de base de datos utilizado fue postgresql, para que esta pudiera ser utilizada en el despliegue se creo una instancia de AWS como servido de base de datos. 
+## 6.3 DNS
+Para implementar el DNS se creo una nueva instancia en AWS la cual gracias a bind9 funciono como servidor DNS.
+## 6.4 Dominio
+Para el dominio se utilizo freenom, pagina web que permite obtener un dominio y configurarlo de forma gratuita.
+## 6.5 Despliegue 
+Para realizar el despliegue de la aplicacion se deben seguir varios pasos.
+### Instanciar servidores InOut (Servers Ecommenrce)
+Una vez instanciados los 3 se debe ejecutar la aplicacion InOut en cada una, para esto se hace.
+sudo su
+cd Proyecto_tel/InOut
+python 3 manage.py runserver 0.0.0.0:3000
+
+Cabe destacar que dos de los servers tendran una ip elastica y el tercero no la tendra, debido a que no se permitio crear mas instancias con estas caracteristicas.
+
+### Intanciar Ecommerce main server 
+Este es el serivdor principal, el cual tendra diferentes configuraciones que permiten el despliegue de la aplicacion, para esto se debe ejecutar.
+sudo su
+nano /etc/nginx/nginx.conf  
+Y en este archivo modificar la ip del tercer server dentro de upstreambackend con la ip publica de la instancia del tercer server para finalmente ejecutar.
+service nginx restart
+
+### DNS primario y secundario
+Se deben inicializar sus instancias correspondientes, dicho DNS fue configurado con la ayuda de bind9.
+
+### Pruebas
+De esta forma ya se podra utilizar la aplicacion si se ingresa al dominio http://inoutinventario.online
