@@ -267,7 +267,7 @@ python 3 manage.py runserver 0.0.0.0:3000
 
 Cabe destacar que dos de los servers tendrán una ip elástica y el tercero no la tendrá, debido a que no se permitió crear más instancias con estas características.
 
-### Intanciar Ecommerce main server 
+### Instanciar Ecommerce main server 
 ![image](https://user-images.githubusercontent.com/110442546/198919033-8e7c6385-76f8-4b91-a076-074237fb2196.png)
 
 Este es el servidor principal, el cual tendrá diferentes configuraciones que permiten el despliegue de la aplicación, para esto se debe ejecutar.
