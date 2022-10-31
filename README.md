@@ -4,8 +4,8 @@
 # 1. Introducción.
 
 ## Integrantes
-Samuel David Villegas Bedoya
-Julian Andres Ramirez Jimenez 
+Samuel David Villegas Bedoya  
+Julian Andres Ramirez Jimenez  
 Julian Giraldo Perez
 
 ## 1.1 Propósito.
@@ -23,7 +23,7 @@ De forma general el software creado para este proyecto es una herramienta que pe
 ### 1.3.1 Perspectiva del producto.
 La idea para este proyecto nació al analizar que muchas veces a los super mercados minoristas o mayoristas pueden perder de vista la opinión del usuario, la cual resulta muchas veces vital para la toma de decisiones.
 
-De ahí surgió nuestra idea, crear una plataforma web que ofrezca la capacidad de dejar comentarios sobre los diferentes productos de una compañia.
+De ahí surgió nuestra idea, crear una plataforma web que ofrezca la capacidad de dejar comentarios sobre los diferentes productos de una compañía.
 ### 1.3.2 Funciones del producto.
 La principal funcionalidad de nuestra plataforma web es la de dar a los dirigentes o empleados de los mercados anteriormente registrados, la capacidad de saber la opinión de diferentes usuarios sobre sus productos, a través de la implementación de un sistema de comentarios.
 
@@ -75,7 +75,7 @@ Cabe destacar que la aplicación no está pensada para interactuar con otras apl
 
 - (RF1) El sistema debe permitir al usuario ingresar un nuevo producto
 - (RF2) El sistema debe permitir al usuario eliminar un producto
-- (RF3) El sistema debe permitir al usuario modificar el numero de productos disponibles
+- (RF3) El sistema debe permitir al usuario modificar el número de productos disponibles
 - (RF4) El sistema debe permitir al usuario guardar información como los productos y su cantidad en una base de datos
 - (RF5) El sistema debe permitir al usuario visualizar los comentarios hechos en cierto producto.
 - (RF6) El sistema debe permitir al usuario crear nuevos comentarios en ciertos productos.
@@ -147,7 +147,7 @@ Cabe destacar que la aplicación no está pensada para interactuar con otras apl
 - (RF2) Mediante un usuario de prueba se eliminará un producto, y se verificará que este se haya eliminado correctamente.
 - (RF3) Mediante un usuario de prueba se modificará el inventario de ciertos productos, y se verificará que este cambio se guarde, y que la interfaz se actualice de acuerdo al cambio.
 - (RF4) Se verificará que la información de los productos y su inventario se guarde en la basa de datos sin presentar perdidas de información.
-- (RF5) Se verificara que los comentarios mostrados si sean los que correspondan al producto
+- (RF5) Se verificará que los comentarios mostrados si sean los que correspondan al producto
 - (RF6) Se añadirán nuevos comentarios y se verificara que estos sean añadidos correctamente a la base de datos
 - (RF7) El usuario debe suministrar nombre, correo y contraseña para hacer el registro, y al finalizar el proceso el usuario debe tener el usuario y contraseña guardado en la base de datos
 - (RF8) Se hará el proceso de inicio de sesión con diferentes usuarios de prueba, para comprobar su correcto funcionamiento.
@@ -201,7 +201,7 @@ Cabe destacar que la aplicación no está pensada para interactuar con otras apl
 # 5 Arquitectura
 
 ## 5.1 Vista Lógica
-En el diagrama se pueden ver dos clases que corresponden a usuarios que se registran, por un lado esta el mercado, este es quien ingresara, eliminara o modificara los productos presentes en la base de datos, de esta forma un mercado posee cero o muchos productos. Por otro lado tenemos al usuario, que son quienes no pueden modificar los productos pero si podrán crear comentarios sobre los mismos, un usuario puede crear cero o muchos comentarios, y a la vez un producto puede tener cero o muchos comentarios.
+En el diagrama se pueden ver dos clases que corresponden a usuarios que se registran, por un lado está el mercado, este es quien ingresara, eliminara o modificara los productos presentes en la base de datos, de esta forma un mercado posee cero o muchos productos. Por otro lado, tenemos al usuario, que son quienes no pueden modificar los productos pero sí podrán crear comentarios sobre los mismos, un usuario puede crear cero o muchos comentarios, y a la vez un producto puede tener cero o muchos comentarios.
 ![Clases_tel drawio](https://user-images.githubusercontent.com/110442546/198854836-d79c888b-517e-4116-b0da-1c015f439b3d.png)
 
  ## 5.2 Modelo de datos
@@ -242,7 +242,7 @@ En este diagrama se observa como el browser busca en el servidor DNS la respecti
 ![Despliegue_tel drawio](https://user-images.githubusercontent.com/110442546/198854878-35befc1e-a797-4136-9a09-9c6dd329595b.png)
 
 ## 5.4 Diagrama de Navegación
-En este diagrama se puede observar como es la navegación a través de la aplicación.
+En este diagrama se puede observar cómo es la navegación a través de la aplicación.
 ![Nave_telematica drawio](https://user-images.githubusercontent.com/110442546/198865581-f2c966f1-7faf-4fc1-87ea-953ac0d68d99.png)
 
 
@@ -250,23 +250,23 @@ En este diagrama se puede observar como es la navegación a través de la aplica
 ## 6.1 Aplicación
 La aplicación fue desarrollada en django, Django es un framework web de alto nivel que permite el desarrollo rápido de sitios web seguros y mantenibles. En este desarrollamos los diferentes modelos, views, templates y demas elementos necesarios para la creación de la aplicación 
 ## 6.2 Base de datos
-El gestor de base de datos utilizado fue postgresql, para que esta pudiera ser utilizada en el despliegue se creo una instancia de AWS como servido de base de datos. 
+El gestor de base de datos utilizado fue postgresql, para que esta pudiera ser utilizada en el despliegue se creó una instancia de AWS como servido de base de datos. 
 ## 6.3 DNS
-Para implementar el DNS se creo una nueva instancia en AWS la cual gracias a bind9 funciono como servidor DNS.
+Para implementar el DNS se creó una nueva instancia en AWS la cual gracias a bind9 funciono como servidor DNS.
 ## 6.4 Dominio
-Para el dominio se utilizo freenom, pagina web que permite obtener un dominio y configurarlo de forma gratuita.
+Para el dominio se utilizó Hostinger, ya que al realizar pruebas se encontró que este tenía un mejor desempeño que freenom. Hostinger es una página web que permite obtener un dominio y configurarlo.
 ## 6.5 Despliegue 
-Para realizar el despliegue de la aplicacion se deben seguir varios pasos.
+Para realizar el despliegue de la aplicación se deben seguir varios pasos.
 ### Instanciar servidores InOut (Servers Ecommenrce)
-Una vez instanciados los 3 se debe ejecutar la aplicacion InOut en cada una, para esto se hace.
+Una vez instanciados los 3 se debe ejecutar la aplicación InOut en cada una, para esto se hace.
 sudo su
 cd Proyecto_tel/InOut
 python 3 manage.py runserver 0.0.0.0:3000
 
-Cabe destacar que dos de los servers tendran una ip elastica y el tercero no la tendra, debido a que no se permitio crear mas instancias con estas caracteristicas.
+Cabe destacar que dos de los servers tendrán una ip elástica y el tercero no la tendrá, debido a que no se permitió crear más instancias con estas características.
 
 ### Intanciar Ecommerce main server 
-Este es el serivdor principal, el cual tendra diferentes configuraciones que permiten el despliegue de la aplicacion, para esto se debe ejecutar.
+Este es el servidor principal, el cual tendrá diferentes configuraciones que permiten el despliegue de la aplicación, para esto se debe ejecutar.
 sudo su
 nano /etc/nginx/nginx.conf  
 Y en este archivo modificar la ip del tercer server dentro de upstreambackend con la ip publica de la instancia del tercer server para finalmente ejecutar.
@@ -276,4 +276,4 @@ service nginx restart
 Se deben inicializar sus instancias correspondientes, dicho DNS fue configurado con la ayuda de bind9.
 
 ### Pruebas
-De esta forma ya se podra utilizar la aplicacion si se ingresa al dominio http://inoutinventario.online
+De esta forma ya se podrá utilizar la aplicación si se ingresa al dominio http://inoutinventario.online
