@@ -343,7 +343,7 @@ service nginx restart
 ### DNS primario y secundario
 ![image](https://user-images.githubusercontent.com/110442546/198919043-645caf52-9715-4764-895d-4c7f1952c97a.png)
 
-Se deben inicializar sus instancias correspondientes, dicho DNS fue configurado con la ayuda de bind9, 
+Se deben inicializar sus instancias correspondientes, dicho DNS fue configurado con la ayuda de bind9 creando un archivo de zona que contine el registro A, NS y CNAME que apuntan a la ip del servidor principal. 
 
 
 ### Pruebas
