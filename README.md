@@ -261,21 +261,23 @@ Para realizar el despliegue de la aplicación se deben seguir varios pasos.
 ![image](https://user-images.githubusercontent.com/110442546/198919017-8ddea68e-fa5c-4131-aa6b-63b046e15d59.png)
 
 Una vez instanciados los 3 se debe ejecutar la aplicación InOut en cada una, para esto se hace.
+~~~
 sudo su
 cd Proyecto_tel/InOut
 python 3 manage.py runserver 0.0.0.0:3000
-
+~~~
 Cabe destacar que dos de los servers tendrán una ip elástica y el tercero no la tendrá, debido a que no se permitió crear más instancias con estas características.
 
 ### Instanciar Ecommerce main server 
 ![image](https://user-images.githubusercontent.com/110442546/198919033-8e7c6385-76f8-4b91-a076-074237fb2196.png)
 
 Este es el servidor principal, el cual tendrá diferentes configuraciones que permiten el despliegue de la aplicación, para esto se debe ejecutar.
+~~~
 sudo su
 nano /etc/nginx/nginx.conf  
 Y en este archivo modificar la ip del tercer server dentro de upstreambackend con la ip publica de la instancia del tercer server para finalmente ejecutar.
 service nginx restart
-
+~~~
 ### DNS primario y secundario
 ![image](https://user-images.githubusercontent.com/110442546/198919043-645caf52-9715-4764-895d-4c7f1952c97a.png)
 
