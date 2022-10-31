@@ -259,9 +259,32 @@ Para el dominio se utilizó Hostinger, ya que al realizar pruebas se encontró q
 Para realizar el despliegue de la aplicación se deben seguir varios pasos.
 ### Instanciar servidores InOut (Servers Ecommenrce)
 ![image](https://user-images.githubusercontent.com/110442546/198919017-8ddea68e-fa5c-4131-aa6b-63b046e15d59.png)
-
 Una vez instanciados los 3 se debe ejecutar la aplicación InOut en cada una, para esto se hace.
 ~~~
+# Proceso que solo se hace una vez
+
+apt update
+apt-get install python3-pip
+pip install django
+pip install psycopg2-binary
+pip install Pillow
+cd P_telematica/InOut/InOut
+nano settings.py
+
+# Agregar esto en la parte superior del archivo
+
+ ALLOWED_HOSTS = ['*']
+ SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+ CSRF_TRUSTED_ORIGINS = ['http://54.161.216.169','http://inoutinventario.online']
+ 
+# Agregar las credenciales de la instancia de BD creada
+ 'NAME': 'inoutdb',
+ 'USER': 'postgres',
+ 'PASSWORD':'54c9ccb45f5eexxxxxxxxxxxxxxxxxx',
+ 'HOST':'inout-db.cjmsruf5lrxxxxxxxxxxxxxxxxxxx',
+ 'DATABASE_PORT':'5432',
+
+# Cada vez que se inicie la instancia
 sudo su
 cd Proyecto_tel/InOut
 python 3 manage.py runserver 0.0.0.0:3000
