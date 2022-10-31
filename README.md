@@ -295,6 +295,45 @@ Cabe destacar que dos de los servers tendrán una ip elástica y el tercero no l
 ![image](https://user-images.githubusercontent.com/110442546/198919033-8e7c6385-76f8-4b91-a076-074237fb2196.png)
 
 Este es el servidor principal, el cual tendrá diferentes configuraciones que permiten el despliegue de la aplicación, para esto se debe ejecutar.
+
+Para configurar el servidor donde apuntará nuestro dominio tuvimos que realizar lo siguiente: 
+
+Abrimos la consola e intalamos ngnix
+~~~
+sudo apt update
+sudo apt install nginx
+~~~
+
+Abrimos el archivo /etc/nginx/nginx.conf y ponemos lo siguiente dentro de las configuraciones 
+~~~
+http {
+ ...
+ #Buscamos y comentamos la linea que dice: include /etc/nginx/sites-enabled/*; y pegamos lo que sigue a continuacion
+        upstream inoutinventario.online {
+                least_conn;
+                server 50.19.49.134:3000;
+                server 3.218.23.129:3000;
+                #server ip_server3 backup;
+        }
+        server {
+                listen      80;
+                server_name inoutinventario.online;
+
+                location / {
+                        proxy_pass http://inoutinventario.online;
+                }
+        }
+}
+~~~
+En la sección de upstream realizamos lo siguiente: 
+- leas_conn nos indica que queremos utilizar el algoritmo de balanciamiento Least Connections, que consiste en elegir el servidor con menos conexiones activas. 
+- Después del algoritmo ponemos luego de la palabra server cada uno de las ips publicas de los servidores donde está alojada la app
+En la sección de server configuramos:
+- Que se estará escuchando por el puerto 80
+- El nombre de servidor sera inoutinventario.online 
+- Que a la ubicación raíz vamos a apuntar al web clouster con nombre inoutinventario.online
+
+Cada vez que se prenda el servidor se debe de ejecutar lo siguiente, ya que necesitamos cambiar la ip del servidor que no tiene ip elástica
 ~~~
 sudo su
 nano /etc/nginx/nginx.conf  
@@ -304,7 +343,8 @@ service nginx restart
 ### DNS primario y secundario
 ![image](https://user-images.githubusercontent.com/110442546/198919043-645caf52-9715-4764-895d-4c7f1952c97a.png)
 
-Se deben inicializar sus instancias correspondientes, dicho DNS fue configurado con la ayuda de bind9.
+Se deben inicializar sus instancias correspondientes, dicho DNS fue configurado con la ayuda de bind9, 
+
 
 ### Pruebas
 De esta forma ya se podrá utilizar la aplicación si se ingresa al dominio http://inoutinventario.online
